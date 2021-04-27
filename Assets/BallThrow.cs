@@ -30,6 +30,8 @@ public class BallThrow : MonoBehaviour
     {
         GameObject bal = Instantiate(ball, Hand.position, Hand.rotation) as GameObject;
         bal.GetComponent<Rigidbody>().AddForce(Hand.forward * speed, ForceMode.Impulse);
-        dog.GetComponentInChildren<Seek>().targetGameObject = ball;
+        dog.GetComponent<Seek>().enabled = true;
+        dog.GetComponentInChildren<Seek>().targetGameObject = bal;
+        
     }
 }

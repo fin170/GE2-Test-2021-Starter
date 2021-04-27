@@ -21,7 +21,6 @@ public class Boid : MonoBehaviour
     
 
 
-    // Use this for initialization
     void Start()
     {
 
@@ -89,7 +88,7 @@ public class Boid : MonoBehaviour
     }
 
 
-    // Update is called once per frame
+   
     void Update()
     {
         force = Calculate();

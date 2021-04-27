@@ -12,7 +12,7 @@ public class Arrive : SteeringBehaviour
     public Transform dog;
     public GameObject targetGameObject = null;
     Seek gameobj;
-
+    public BallGrab parent;
     public override Vector3 Calculate()
     {
         return boid.ArriveForce(targetPosition, slowingDistance);
@@ -28,8 +28,11 @@ public class Arrive : SteeringBehaviour
         {
 
             GetComponent<Arrive>().enabled = false;
+            boid.velocity = Vector3.zero;
 
-            gameobj.targetGameObject.transform.parent = null;
+            //targetGameObject.transform.parent;
+               parent.unattach = true;
+            parent.transform.SetParent(null);
         }
     }
 

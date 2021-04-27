@@ -5,23 +5,35 @@ using UnityEngine;
 public class BallGrab : MonoBehaviour
 {
     bool hasball;
+   public bool unattach;
 
     public GameObject dog;
+    public Collider ballCo;
     public void Start()
     {
         
     }
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider ballCo)
     {
-        if (other.gameObject.tag == "Ball" && hasball==false)
+        if (ballCo.gameObject.tag == "Ball" && hasball==false)
         {
            
-            other.transform.parent = dog.transform;
+            ballCo.transform.parent = dog.transform;
             
             hasball = true;
             dog.GetComponent<Arrive>().enabled = true;
             dog.GetComponent<Seek>().enabled = false;
 
+        }
+    }
+
+    public void Update()
+    {
+        if (unattach)
+        {
+            ballCo.transform.parent = null;
+            unattach = false;
+            hasball = false;
         }
     }
 }

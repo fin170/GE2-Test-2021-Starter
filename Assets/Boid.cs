@@ -18,12 +18,13 @@ public class Boid : MonoBehaviour
     public float banking = 0.1f;
     public float maxSpeed = 5.0f;
     public float maxForce = 10.0f;
-    
 
+    AudioSource bark;
+    float barkTime = 5f;
 
     void Start()
     {
-
+        bark = GetComponent<AudioSource>();
         SteeringBehaviour[] behaviours = GetComponents<SteeringBehaviour>();
 
         foreach (SteeringBehaviour b in behaviours)
@@ -91,6 +92,13 @@ public class Boid : MonoBehaviour
    
     void Update()
     {
+        barkTime -= 1f * Time.deltaTime;
+        if (barkTime <= 0)
+        {
+            bark.Play(0);
+            barkTime = 5f;
+        }
+
         force = Calculate();
         Vector3 newAcceleration = force / mass;
         acceleration = Vector3.Lerp(acceleration, newAcceleration, Time.deltaTime);

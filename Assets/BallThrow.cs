@@ -11,7 +11,7 @@ public class BallThrow : MonoBehaviour
     public Transform Hand;
     //  public Seek seek;
     public GameObject dog;
-
+    GameObject bal;
 
     public void Start()
     {
@@ -28,7 +28,7 @@ public class BallThrow : MonoBehaviour
     }
     public void Shoot()
     {
-        GameObject bal = Instantiate(ball, Hand.position, Hand.rotation) as GameObject;
+        bal = Instantiate(ball, Hand.position, Hand.rotation) as GameObject;
         bal.GetComponent<Rigidbody>().AddForce(Hand.forward * speed, ForceMode.Impulse);
         dog.GetComponent<Seek>().enabled = true;
         dog.GetComponentInChildren<Seek>().targetGameObject = bal;

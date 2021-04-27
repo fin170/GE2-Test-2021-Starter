@@ -9,8 +9,14 @@ public class BallThrow : MonoBehaviour
     public GameObject ball;
     public float speed = 20;
     public Transform Hand;
+    //  public Seek seek;
+    public GameObject dog;
 
 
+    public void Start()
+    {
+        dog = GameObject.Find("dog");
+    }
     // Start is called before the first frame update
     void Update()
     {
@@ -24,5 +30,6 @@ public class BallThrow : MonoBehaviour
     {
         GameObject bal = Instantiate(ball, Hand.position, Hand.rotation) as GameObject;
         bal.GetComponent<Rigidbody>().AddForce(Hand.forward * speed, ForceMode.Impulse);
+        dog.GetComponentInChildren<Seek>().targetGameObject = ball;
     }
 }

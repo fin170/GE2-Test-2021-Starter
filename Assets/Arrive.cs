@@ -20,7 +20,7 @@ public class Arrive : SteeringBehaviour
     {
         if (targetGameObject != null)
         {
-            targetPosition = new Vector3   (targetGameObject.transform.position.x,0f,targetGameObject.transform.position.z);
+            targetPosition += new Vector3   (targetGameObject.transform.position.x,0f,targetGameObject.transform.position.z);
         }
     }
 }

@@ -30,7 +30,7 @@ public class Arrive : SteeringBehaviour
             GetComponent<Arrive>().enabled = false;
             boid.velocity = Vector3.zero;
 
-            //targetGameObject.transform.parent;
+            targetGameObject.GetComponent<BallGrab>();
                parent.unattach = true;
             parent.transform.SetParent(null);
         }
